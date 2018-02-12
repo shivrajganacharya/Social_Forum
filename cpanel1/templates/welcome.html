@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+    {% csrf_token %}
+    Welcome {{e}}
+    <br><br>
+     <form action="/send/" method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="Enter comment" name="chat" size="75" required>
+        <input type="submit" value="Send">
+    </form>
+    <br><br>
+    <button type="button" onclick="location.href='{% url 'log' %}'">Logout</button>
+    <br><br>
+    {% for key, value in d.items %}
+        {{ value.glb }}  => &nbsp  {{ value.date }}
+        <fieldset>{{ value.chat }}</fieldset>
+        <br><br>
+    {% endfor %}
+
+</body>
+</html>
